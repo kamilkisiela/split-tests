@@ -2,7 +2,9 @@
 
 const glob = require("glob");
 const path = require("path");
-const { removeDeletedFiles, addNewFiles } = require("./utils");
+const fs = require("fs");
+const xmlParser = require("fast-xml-parser");
+const { removeDeletedFiles, addNewFiles, findFilename } = require("./utils");
 const createGroups = require("./distributor");
 
 function findFiles(config) {
@@ -11,6 +13,37 @@ function findFiles(config) {
   // const options = require(config.configFile)['split-tests'];
 
   return glob.sync(pattern, { cwd: rootDir, absolute: true });
+}
+
+function loadReports(config) {
+  const pattern = config.reporterOptions.mochaFile.replace("[hash]", "*");
+  const rootDir = config.projectRoot;
+  const reports = glob.sync(pattern, { cwd: rootDir, absolute: true });
+
+  return reports.map(loadReport).map((t) => ({
+    time: t.time,
+    path: path.join(config.projectRoot, t.path),
+  }));
+}
+
+function loadReport(file) {
+  const junitRaw = fs.readFileSync(file, "utf-8");
+  const junit = xmlParser.parse(
+    junitRaw,
+    {
+      ignoreAttributes: false,
+      attributeNamePrefix: "",
+    },
+    true
+  );
+
+  const time = parseFloat(junit.testsuites.time);
+  const testfile = findFilename(junit.testsuites);
+
+  return {
+    time,
+    path: testfile,
+  };
 }
 
 module.exports = (on, config) => {

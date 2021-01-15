@@ -3,7 +3,7 @@
   "testFiles": "*.cy.js",
   "video": false,
   "xreporter": "junit",
-  "xreporterOptions": {
+  "reporterOptions": {
     "mochaFile": "results/junit-[hash].xml",
     "toConsole": false
   }

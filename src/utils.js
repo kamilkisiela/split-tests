@@ -30,7 +30,36 @@ function removeDeletedFiles(reports, tests) {
   return reports.filter((r) => tests.some((t) => t.path === r.path));
 }
 
+function findFilename(testsuite) {
+  if (!testsuite) {
+    throw new Error(`Can't find file`);
+  }
+
+  if (Array.isArray(testsuite)) {
+    for (const t of testsuite) {
+      const file = findFilename(t);
+
+      if (file) {
+        return file;
+      }
+    }
+  } else if (typeof testsuite === "object") {
+    if (testsuite.file) {
+      return testsuite.file;
+    }
+
+    if (testsuite.testsuite) {
+      return findFilename(testsuite.testsuite);
+    }
+
+    if (testsuite.testcase) {
+      return findFilename(testsuite.testcase);
+    }
+  }
+}
+
 module.exports = {
   addNewFiles,
   removeDeletedFiles,
+  findFilename,
 };
