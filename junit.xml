@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="26" failures="0" errors="0" time="11.516">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T12:20:07" time="2.737" tests="3">
+    <testcase classname=" a test" name=" a test" time="0.004" file="integration/a1.spec.js">
+    </testcase>
+    <testcase classname=" add test" name=" add test" time="0" file="integration/a1.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="1.005" file="integration/a1.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="b spec described" errors="0" failures="0" skipped="0" timestamp="2021-01-15T12:20:07" time="3.742" tests="4">
+    <testcase classname="b spec described b spec" name="b spec described b spec" time="0.004" file="integration/b2.spec.js">
+    </testcase>
+    <testcase classname="b spec described yet another b spec" name="b spec described yet another b spec" time="0" file="integration/b2.spec.js">
+    </testcase>
+    <testcase classname="b spec described multiple multiple test" name="b spec described multiple multiple test" time="0.001" file="integration/b2.spec.js">
+    </testcase>
+    <testcase classname="b spec described sleep" name="b spec described sleep" time="2.005" file="integration/b2.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="b spec described" errors="0" failures="0" skipped="0" timestamp="2021-01-15T12:20:07" time="5.786" tests="4">
+    <testcase classname="b spec described b spec" name="b spec described b spec" time="0.004" file="integration/b1.spec.js">
+    </testcase>
+    <testcase classname="b spec described yet another b spec" name="b spec described yet another b spec" time="0" file="integration/b1.spec.js">
+    </testcase>
+    <testcase classname="b spec described multiple multiple test" name="b spec described multiple multiple test" time="0.001" file="integration/b1.spec.js">
+    </testcase>
+    <testcase classname="b spec described sleep" name="b spec described sleep" time="4.001" file="integration/b1.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T12:20:07" time="6.631" tests="3">
+    <testcase classname=" a test" name=" a test" time="0.003" file="integration/a2.spec.js">
+    </testcase>
+    <testcase classname=" add test" name=" add test" time="0.001" file="integration/a2.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="5.004" file="integration/a2.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T12:20:07" time="6.641" tests="3">
+    <testcase classname=" c test" name=" c test" time="0.002" file="integration/c4.spec.js">
+    </testcase>
+    <testcase classname=" to text" name=" to text" time="0" file="integration/c4.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="5.004" file="integration/c4.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T12:20:07" time="7.74" tests="3">
+    <testcase classname=" c test" name=" c test" time="0.022" file="integration/c3.spec.js">
+    </testcase>
+    <testcase classname=" to text" name=" to text" time="0" file="integration/c3.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="6.002" file="integration/c3.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T12:20:07" time="7.711" tests="3">
+    <testcase classname=" c test" name=" c test" time="0.004" file="integration/c2.spec.js">
+    </testcase>
+    <testcase classname=" to text" name=" to text" time="0" file="integration/c2.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="6.002" file="integration/c2.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T12:20:10" time="8.22" tests="3">
+    <testcase classname=" c test" name=" c test" time="0.001" file="integration/c1.spec.js">
+    </testcase>
+    <testcase classname=" to text" name=" to text" time="0" file="integration/c1.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="8.005" file="integration/c1.spec.js">
+    </testcase>
+  </testsuite>
+</testsuites>

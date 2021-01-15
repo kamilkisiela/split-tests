@@ -1,0 +1,26 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Test ${{ matrix.job_id }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        job_id: [0, 1, 2]
+    env:
+      CI: true
+      JEST_JOBS_INDEX: ${{ matrix.job_id }}
+      JEST_JOBS_TOTAL: 3
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+      - name: Install
+        run: yarn
+      - name: Test
+        run: yarn test
