@@ -22,12 +22,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "jest --no-cache"
+    "test": "jest --no-cache",
+    "e2e": "cypress run"
   },
   "dependencies": {
     "fast-xml-parser": "3.17.6"
   },
   "devDependencies": {
+    "cypress": "6.2.1",
     "jest": "26.6.3",
     "jest-junit": "12.0.0"
   }

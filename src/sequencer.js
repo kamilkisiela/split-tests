@@ -3,6 +3,7 @@
 const Sequencer = require("@jest/test-sequencer").default;
 const createGroups = require("./distributor");
 const junit = require("./junit-adapter");
+const {removeDeletedFiles, addNewFiles} = require('./utils');
 
 /**
  * @typedef {{path: string; time: number;}} TimeReport
@@ -74,8 +75,8 @@ class JobSequencer extends Sequencer {
         }
       }
 
-      reports = this.removeDeletedFiles(reports, normalizedTests);
-      reports = this.addNewFiles(reports, normalizedTests);
+      reports = removeDeletedFiles(reports, normalizedTests);
+      reports = addNewFiles(reports, normalizedTests);
 
       const groups = createGroups(reports, total);
 
@@ -87,37 +88,7 @@ class JobSequencer extends Sequencer {
     return tests;
   }
 
-  /**
-   * @param {TimeReport[]} reports
-   * @param {Test[]} tests
-   */
-  removeDeletedFiles(reports, tests) {
-    return reports.filter((r) => tests.some((t) => t.path === r.path));
-  }
-
-  /**
-   * @param {TimeReport[]} reports
-   * @param {Test[]} tests
-   */
-  addNewFiles(reports, tests) {
-    let averageFileTime = 0;
-
-    if (reports.length) {
-      for (const report of reports) {
-        averageFileTime += report.time;
-      }
-
-      averageFileTime /= reports.length;
-    } else {
-      averageFileTime = 1;
-    }
-
-    return tests.map((t) => {
-      const existing = reports.find((r) => r.path === t.path);
-
-      return existing || { path: t.path, time: averageFileTime };
-    });
-  }
+  
 }
 
 module.exports = JobSequencer;

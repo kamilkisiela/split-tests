@@ -6,7 +6,7 @@
 module.exports = {
   globals: {
     "split-tests": {
-      junit: "<rootDir>/junit.xml",
+      junit: "<rootDir>/unit/junit.xml",
     },
   },
   reporters: process.env.JEST_JOBS_TOTAL
@@ -16,6 +16,7 @@ module.exports = {
         [
           "jest-junit",
           {
+            outputDirectory: 'unit',
             addFileAttribute: "true",
           },
         ],

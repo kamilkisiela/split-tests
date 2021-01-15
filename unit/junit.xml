@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="26" failures="0" errors="0" time="10.357">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T19:25:49" time="2.714" tests="3">
+    <testcase classname=" a test" name=" a test" time="0.002" file="unit/a1.spec.js">
+    </testcase>
+    <testcase classname=" add test" name=" add test" time="0" file="unit/a1.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="1.005" file="unit/a1.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="b spec described" errors="0" failures="0" skipped="0" timestamp="2021-01-15T19:25:49" time="3.731" tests="4">
+    <testcase classname="b spec described b spec" name="b spec described b spec" time="0.001" file="unit/b2.spec.js">
+    </testcase>
+    <testcase classname="b spec described yet another b spec" name="b spec described yet another b spec" time="0.001" file="unit/b2.spec.js">
+    </testcase>
+    <testcase classname="b spec described multiple multiple test" name="b spec described multiple multiple test" time="0" file="unit/b2.spec.js">
+    </testcase>
+    <testcase classname="b spec described sleep" name="b spec described sleep" time="2.006" file="unit/b2.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="b spec described" errors="0" failures="0" skipped="0" timestamp="2021-01-15T19:25:49" time="5.726" tests="4">
+    <testcase classname="b spec described b spec" name="b spec described b spec" time="0.001" file="unit/b1.spec.js">
+    </testcase>
+    <testcase classname="b spec described yet another b spec" name="b spec described yet another b spec" time="0.001" file="unit/b1.spec.js">
+    </testcase>
+    <testcase classname="b spec described multiple multiple test" name="b spec described multiple multiple test" time="0" file="unit/b1.spec.js">
+    </testcase>
+    <testcase classname="b spec described sleep" name="b spec described sleep" time="4.001" file="unit/b1.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T19:25:49" time="6.718" tests="3">
+    <testcase classname=" c test" name=" c test" time="0.001" file="unit/c4.spec.js">
+    </testcase>
+    <testcase classname=" to text" name=" to text" time="0" file="unit/c4.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="5.003" file="unit/c4.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T19:25:49" time="7.71" tests="3">
+    <testcase classname=" c test" name=" c test" time="0.002" file="unit/c2.spec.js">
+    </testcase>
+    <testcase classname=" to text" name=" to text" time="0" file="unit/c2.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="6.001" file="unit/c2.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T19:25:49" time="7.722" tests="3">
+    <testcase classname=" c test" name=" c test" time="0.001" file="unit/c3.spec.js">
+    </testcase>
+    <testcase classname=" to text" name=" to text" time="0.001" file="unit/c3.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="6.001" file="unit/c3.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T19:25:52" time="5.097" tests="3">
+    <testcase classname=" a test" name=" a test" time="0" file="unit/a2.spec.js">
+    </testcase>
+    <testcase classname=" add test" name=" add test" time="0" file="unit/a2.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="4.999" file="unit/a2.spec.js">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-01-15T19:25:49" time="9.72" tests="3">
+    <testcase classname=" c test" name=" c test" time="0.002" file="unit/c1.spec.js">
+    </testcase>
+    <testcase classname=" to text" name=" to text" time="0" file="unit/c1.spec.js">
+    </testcase>
+    <testcase classname=" sleep" name=" sleep" time="8.004" file="unit/c1.spec.js">
+    </testcase>
+  </testsuite>
+</testsuites>
