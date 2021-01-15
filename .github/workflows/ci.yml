@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   unit:
-    name: Unit ${{ matrix.job_id }}
+    name: Unit ${{ matrix.job_index }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -25,7 +25,7 @@ jobs:
         run: yarn test --jobsIndex=${{ matrix.job_index }}
 
   e2e:
-    name: E2E ${{ matrix.job_id }}
+    name: E2E ${{ matrix.job_index }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -33,7 +33,7 @@ jobs:
     env:
       CI: true
       CYPRESS_JOBS_TOTAL: 3
-      CYPRESS_JOBS_INDEX: ${{ matrix.job_id }}
+      CYPRESS_JOBS_INDEX: ${{ matrix.job_index }}
 
     steps:
       - uses: actions/checkout@v2
