@@ -10,6 +10,14 @@ const junit = require("./junit-adapter");
  * @typedef {{junit: string; reader(tests: Test[]): Promise<TimeReport[]>; jobs: { total(): number; index(): number; }}} Options
  */
 
+function getArg(name) {
+  const arg = process.argv.find((val) => val.startsWith(`--${name}`));
+
+  if (arg) {
+    return arg.replace(`--${name}=`, "");
+  }
+}
+
 /**
  * :)
  */
@@ -19,9 +27,15 @@ class JobSequencer extends Sequencer {
    * @param {Test[]} tests
    */
   async sort(tests) {
-    if (process.env.JEST_JOBS_TOTAL) {
-      let total = parseInt(process.env.JEST_JOBS_TOTAL, 10);
-      let index = parseInt(process.env.JEST_JOBS_INDEX, 10);
+    if (process.env.JEST_JOBS_TOTAL || getArg("jobsTotal")) {
+      let total = parseInt(
+        process.env.JEST_JOBS_TOTAL || getArg("jobsTotal"),
+        10
+      );
+      let index = parseInt(
+        process.env.JEST_JOBS_INDEX || getArg("jobsIndex"),
+        10
+      );
 
       if (process.env.JEST_NORMAL) {
         return tests
