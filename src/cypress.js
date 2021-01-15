@@ -62,7 +62,7 @@ module.exports = (on, config) => {
   /**
    * @type {import('./sequencer').TimeReport[]}
    */
-  let reports = [];
+  let reports = loadReports(config);
   reports = removeDeletedFiles(reports, normalizedTests);
   reports = addNewFiles(reports, normalizedTests);
 
