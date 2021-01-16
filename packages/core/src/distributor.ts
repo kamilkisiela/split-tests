@@ -1,15 +1,14 @@
-/// @ts-check
+import { TimeReport } from "./types";
 
-/**
- * @param {import('./sequencer').TimeReport[]} tests
- * @param {number} jobs
- */
-function distribute(tests, jobs) {
-  const sortedFilesWithStats = tests.sort((a, b) => {
+export function distribute(
+  reports: TimeReport[],
+  jobs: number
+): { time: number; files: string[] }[] {
+  const sortedFilesWithStats = reports.sort((a, b) => {
     return b.time - a.time;
   });
 
-  function createBuckets(totalGroups) {
+  function createBuckets(totalGroups: number) {
     const buckets = [];
     for (let i = 0; i < totalGroups; i++) {
       buckets.push({ time: 0, files: [] });
@@ -17,7 +16,7 @@ function distribute(tests, jobs) {
     return buckets;
   }
 
-  function nextBucketBy(buckets) {
+  function nextBucketBy(buckets: any[]) {
     const mininumPropertyValue = Math.min(...buckets.map((b) => b.time));
     return buckets.find((bucket) => bucket.time === mininumPropertyValue);
   }
@@ -32,5 +31,3 @@ function distribute(tests, jobs) {
   }
   return buckets;
 }
-
-module.exports = distribute;

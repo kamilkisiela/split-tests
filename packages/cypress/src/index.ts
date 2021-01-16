@@ -1,13 +1,14 @@
-/// @ts-check
+import glob from "glob";
+import path from "path";
+import {
+  distribute,
+  removeDeletedFiles,
+  addNewFiles,
+  findFilenameInJUnit,
+  loadXML,
+} from "@split-tests/core";
 
-const glob = require("glob");
-const path = require("path");
-const fs = require("fs");
-const xmlParser = require("fast-xml-parser");
-const { removeDeletedFiles, addNewFiles, findFilename } = require("./utils");
-const createGroups = require("./distributor");
-
-function findFiles(config) {
+function findFiles(config: any): string[] {
   const rootDir = config.integrationFolder;
   const pattern = config.testFiles;
   // const options = require(config.configFile)['split-tests'];
@@ -15,7 +16,7 @@ function findFiles(config) {
   return glob.sync(pattern, { cwd: rootDir, absolute: true });
 }
 
-function loadReports(config) {
+function loadReports(config: any) {
   const pattern = config.reporterOptions.mochaFile.replace("[hash]", "*");
   const rootDir = config.projectRoot;
   const reports = glob.sync(pattern, { cwd: rootDir, absolute: true });
@@ -26,19 +27,11 @@ function loadReports(config) {
   }));
 }
 
-function loadReport(file) {
-  const junitRaw = fs.readFileSync(file, "utf-8");
-  const junit = xmlParser.parse(
-    junitRaw,
-    {
-      ignoreAttributes: false,
-      attributeNamePrefix: "",
-    },
-    true
-  );
+function loadReport(file: string) {
+  const junit = loadXML(file);
 
   const time = parseFloat(junit.testsuites.time);
-  const testfile = findFilename(junit.testsuites);
+  const testfile = findFilenameInJUnit(junit.testsuites);
 
   return {
     time,
@@ -46,7 +39,7 @@ function loadReport(file) {
   };
 }
 
-module.exports = (on, config) => {
+module.exports = (_on: any, config: any) => {
   if (!process.env.CYPRESS_JOBS_TOTAL) {
     return config;
   }
@@ -56,8 +49,8 @@ module.exports = (on, config) => {
     path: t,
   }));
 
-  let total = parseInt(process.env.CYPRESS_JOBS_TOTAL, 10);
-  let index = parseInt(process.env.CYPRESS_JOBS_INDEX, 10);
+  let total = parseInt(process.env.CYPRESS_JOBS_TOTAL!, 10);
+  let index = parseInt(process.env.CYPRESS_JOBS_INDEX!, 10);
 
   /**
    * @type {import('./sequencer').TimeReport[]}
@@ -66,10 +59,10 @@ module.exports = (on, config) => {
   reports = removeDeletedFiles(reports, normalizedTests);
   reports = addNewFiles(reports, normalizedTests);
 
-  const groups = createGroups(reports, total);
+  const groups = distribute(reports, total);
 
   config.testFiles = groups[index].files
-    .map((testFile) => normalizedTests.find((t) => t.path === testFile))
+    .map((testFile: any) => normalizedTests.find((t) => t.path === testFile)!)
     .map((t) => path.relative(config.integrationFolder, t.path));
 
   // return config
