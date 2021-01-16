@@ -1,3 +1,3 @@
-const plugin = require("../../src/cypress");
+const plugin = require("../../packages/cypress/dist/index.cjs");
 
 module.exports = plugin;

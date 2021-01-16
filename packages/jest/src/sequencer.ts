@@ -1,17 +1,21 @@
-/// @ts-check
+import Sequencer from "@jest/test-sequencer";
+import type { Test } from "jest-runner";
+import {
+  distribute,
+  removeDeletedFiles,
+  addNewFiles,
+  TimeReport,
+} from "@split-tests/core";
 
-const Sequencer = require("@jest/test-sequencer").default;
-const createGroups = require("./distributor");
-const junit = require("./junit-adapter");
-const {removeDeletedFiles, addNewFiles} = require('./utils');
+import junit from "./junit-adapter";
 
-/**
- * @typedef {{path: string; time: number;}} TimeReport
- * @typedef {import('jest-runner').Test} Test
- * @typedef {{junit: string; reader(tests: Test[]): Promise<TimeReport[]>; jobs: { total(): number; index(): number; }}} Options
- */
+export interface Options {
+  junit: string;
+  reader(tests: Test[]): Promise<TimeReport[]>;
+  jobs: { total(): number; index(): number };
+}
 
-function getArg(name) {
+function getArg(name: string) {
   const arg = process.argv.find((val) => val.startsWith(`--${name}`));
 
   if (arg) {
@@ -19,22 +23,16 @@ function getArg(name) {
   }
 }
 
-/**
- * :)
- */
-class JobSequencer extends Sequencer {
-  /**
-   *
-   * @param {Test[]} tests
-   */
-  async sort(tests) {
+export default class JobSequencer extends Sequencer {
+  // @ts-ignore
+  async sort(tests: Test[]) {
     if (process.env.JEST_JOBS_TOTAL || getArg("jobsTotal")) {
       let total = parseInt(
-        process.env.JEST_JOBS_TOTAL || getArg("jobsTotal"),
+        process.env.JEST_JOBS_TOTAL || getArg("jobsTotal")!,
         10
       );
       let index = parseInt(
-        process.env.JEST_JOBS_INDEX || getArg("jobsIndex"),
+        process.env.JEST_JOBS_INDEX || getArg("jobsIndex")!,
         10
       );
 
@@ -46,17 +44,11 @@ class JobSequencer extends Sequencer {
 
       const config = tests[0].context.config;
 
-      /**
-       * @type TimeReport[]
-       */
-      let reports = [];
+      let reports: TimeReport[] = [];
       const normalizedTests = tests.sort((a, b) => (a.path < b.path ? -1 : 1));
 
       if (config.globals && config.globals["split-tests"]) {
-        /**
-         * @type Options
-         */
-        const options = config.globals["split-tests"];
+        const options = config.globals["split-tests"] as Options;
         if (options.junit) {
           reports = junit(config, options);
         } else if (typeof options.reader === "function") {
@@ -78,7 +70,7 @@ class JobSequencer extends Sequencer {
       reports = removeDeletedFiles(reports, normalizedTests);
       reports = addNewFiles(reports, normalizedTests);
 
-      const groups = createGroups(reports, total);
+      const groups = distribute(reports, total);
 
       return groups[index].files.map((testFile) =>
         normalizedTests.find((t) => t.path === testFile)
@@ -87,8 +79,4 @@ class JobSequencer extends Sequencer {
 
     return tests;
   }
-
-  
 }
-
-module.exports = JobSequencer;
