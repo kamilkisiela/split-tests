@@ -2,6 +2,9 @@ name: CI
 
 on: [push, pull_request]
 
+defaults:
+  timeout-minutes: 3
+
 jobs:
   unit:
     name: Unit ${{ matrix.job_index }}
