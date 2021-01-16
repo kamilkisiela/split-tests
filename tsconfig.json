@@ -12,9 +12,9 @@
     "outDir": "dist",
 
     "strict": true,
-
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitAny": true,
 
     "moduleResolution": "node",
     "esModuleInterop": true,

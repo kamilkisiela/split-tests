@@ -6,6 +6,7 @@ import {
   addNewFiles,
   findFilenameInJUnit,
   loadXML,
+  TimeReport,
 } from "@split-tests/core";
 
 function findFiles(config: any): string[] {
@@ -16,7 +17,7 @@ function findFiles(config: any): string[] {
   return glob.sync(pattern, { cwd: rootDir, absolute: true });
 }
 
-function loadReports(config: any) {
+function loadReports(config: any): TimeReport[] {
   const pattern = config.reporterOptions.mochaFile.replace("[hash]", "*");
   const rootDir = config.projectRoot;
   const reports = glob.sync(pattern, { cwd: rootDir, absolute: true });
@@ -52,9 +53,6 @@ module.exports = (_on: any, config: any) => {
   let total = parseInt(process.env.CYPRESS_JOBS_TOTAL!, 10);
   let index = parseInt(process.env.CYPRESS_JOBS_INDEX!, 10);
 
-  /**
-   * @type {import('./sequencer').TimeReport[]}
-   */
   let reports = loadReports(config);
   reports = removeDeletedFiles(reports, normalizedTests);
   reports = addNewFiles(reports, normalizedTests);
