@@ -2,14 +2,11 @@ name: CI
 
 on: [push, pull_request]
 
-defaults:
-  run:
-    timeout-minutes: 3
-
 jobs:
   unit:
     name: Unit ${{ matrix.job_index }}
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     strategy:
       matrix:
         job_index: [0, 1, 2]
@@ -33,6 +30,7 @@ jobs:
   e2e:
     name: E2E ${{ matrix.job_index }}
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     strategy:
       matrix:
         job_index: [0, 1, 2]
