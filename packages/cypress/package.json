@@ -1,7 +1,7 @@
 {
   "name": "@split-tests/cypress",
   "version": "0.0.7",
-  "description": "Split test files in Cypress into parallel CI jobs",
+  "description": "Splits test files in Cypress and ensures all parallel jobs finish work at a similar time",
   "author": {
     "name": "Kamil Kisiela",
     "email": "kamil.kisiela@gmail.com",

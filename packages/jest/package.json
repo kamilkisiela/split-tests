@@ -1,7 +1,7 @@
 {
   "name": "@split-tests/jest",
   "version": "0.0.7",
-  "description": "Split test files in Jest into parallel CI jobs",
+  "description": "Splits test files in Jest and ensures all parallel jobs finish work at a similar time",
   "author": {
     "name": "Kamil Kisiela",
     "email": "kamil.kisiela@gmail.com",

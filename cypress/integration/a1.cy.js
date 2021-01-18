@@ -1,16 +1,1 @@
-const aModule = require('./a');
-const wait = require('./wait');
-
-describe('a1', () => {
-  it("a test", () => {
-    expect(2 + 2).to.equal(4);
-  });
-  
-  it("add test", () => {
-    expect(aModule.add(2, 2)).to.equal(4);
-  });
-  
-  it("sleep", async () => {
-    await wait(1000);
-  });
-})
+require("./utils").createTests([1000, 2200, 3120, 4321], 1, "a1");

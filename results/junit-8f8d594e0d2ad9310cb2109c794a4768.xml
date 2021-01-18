@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="34.9250" tests="4" failures="0">
+  <testsuite name="Root Suite" timestamp="2021-01-18T18:23:50" tests="0" file="cypress/integration/d1.cy.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="d1" timestamp="2021-01-18T18:23:50" tests="4" time="34.9250" failures="0">
+    <testcase name="d1 0 - 0" time="11.0600" classname="0 - 0">
+    </testcase>
+    <testcase name="d1 0 - 1" time="6.5290" classname="0 - 1">
+    </testcase>
+    <testcase name="d1 0 - 2" time="8.1060" classname="0 - 2">
+    </testcase>
+    <testcase name="d1 0 - 3" time="9.2300" classname="0 - 3">
+    </testcase>
+  </testsuite>
+</testsuites>
