@@ -10,7 +10,7 @@ Ensures all parallel jobs finish work at a similar time!
 
 :============ - Job 3 (19 minutes)
 
-**Before**
+**After**
 
 :============= - Job 1 (26 minutes)
 
