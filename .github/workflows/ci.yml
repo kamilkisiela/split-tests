@@ -27,6 +27,26 @@ jobs:
       - name: Test
         run: yarn test --jobsIndex=${{ matrix.job_index }}
 
+  single-unit:
+    name: Unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CI: true
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+      - name: Install
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test
+
   e2e:
     name: E2E ${{ matrix.job_index }}
     runs-on: ubuntu-latest
@@ -38,6 +58,26 @@ jobs:
       CI: true
       CYPRESS_JOBS_TOTAL: 3
       CYPRESS_JOBS_INDEX: ${{ matrix.job_index }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+      - name: Install
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn e2e
+  
+  single-e2e:
+    name: E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CI: true
 
     steps:
       - uses: actions/checkout@v2
