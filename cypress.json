@@ -1,0 +1,10 @@
+{
+  "defaultCommandTimeout": 15000,
+  "testFiles": "*.cy.js",
+  "video": false,
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "results/junit-[hash].xml",
+    "toConsole": false
+  }
+}

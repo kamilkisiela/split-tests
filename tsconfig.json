@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
+
+    "target": "es2017",
+    "module": "esnext",
+    "declaration": true,
+
+    "baseUrl": ".",
+    "rootDir": "packages",
+    "outDir": "dist",
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "paths": {
+      "@split-tests/core": ["packages/core/src/index.ts"],
+      "@split-tests/cypress": ["packages/cypress/src/index.ts"],
+      "@split-tests/jest": ["packages/jest/src/index.ts"]
+    }
+  },
+  "include": ["packages"]
+}

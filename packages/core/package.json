@@ -1,0 +1,36 @@
+{
+  "name": "@split-tests/core",
+  "version": "0.0.7",
+  "description": "internal",
+  "author": {
+    "name": "Kamil Kisiela",
+    "email": "kamil.kisiela@gmail.com",
+    "url": "https://github.com/kamilkisiela/split-tests"
+  },
+  "keywords": [
+    "jest",
+    "jest-sequencer",
+    "ci",
+    "test",
+    "testing",
+    "parallelisation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "kamilkisiela/split-tests",
+    "directory": "packages/core"
+  },
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "typescript": {
+    "definition": "dist/index.d.ts"
+  },
+  "scripts": {
+    "prepack": "bob prepack"
+  },
+  "dependencies": {
+    "fast-xml-parser": "3.17.6"
+  }
+}
