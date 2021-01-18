@@ -4,19 +4,19 @@ Splits test files in Cypress and ensures all parallel jobs finish work at a simi
 
 **Before**
 
-:=========================== - Job 1 (46 minutes)
-
-:======== - Job 2 (13 minutes)
-
-:============ - Job 3 (19 minutes)
+|                             | Job |    Time    |
+| --------------------------- | :-: | :--------: |
+| =========================== |  1  | 46 minutes |
+| ========                    |  2  | 13 minutes |
+| ============                |  3  | 19 minutes |
 
 **After**
 
-:============= - Job 1 (26 minutes)
-
-:============= - Job 2 (26 minutes)
-
-:============= - Job 3 (26 minutes)
+|               | Job |    Time    |
+| ------------- | :-: | :--------: |
+| ============= |  1  | 26 minutes |
+| ============= |  2  | 26 minutes |
+| ============= |  3  | 26 minutes |
 
 ## Setup
 
