@@ -18,7 +18,7 @@ export default function junitAdapter(
     const file = findFilenameInJUnit(t);
 
     return {
-      path: path.resolve(path.dirname(junitFile), file),
+      path: path.resolve(rootDir, file),
       time: parseFloat(t.time),
     };
   });
