@@ -30,7 +30,7 @@
     "prepack": "bob prepack"
   },
   "dependencies": {
-    "@split-tests/core": "^1.0.0",
+    "@split-tests/core": "^0.0.7",
     "glob": "^7.1.6"
   }
 }
