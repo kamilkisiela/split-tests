@@ -19,4 +19,4 @@ Ensures all parallel jobs finish work at a similar time!
 | ============= |  3  | 26 minutes |
 
 - [Jest documentation](packages/jest/README.md)
-- [Cypress documentation](packages/jest/README.md)
+- [Cypress documentation](packages/cypress/README.md)
