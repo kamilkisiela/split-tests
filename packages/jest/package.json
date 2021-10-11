@@ -21,7 +21,8 @@
     "directory": "packages/jest"
   },
   "publishConfig": {
-    "directory": "dist"
+    "directory": "dist",
+    "access": "public"
   },
   "license": "MIT",
   "main": "dist/index.cjs.js",

@@ -20,7 +20,8 @@
     "directory": "packages/cypress"
   },
   "publishConfig": {
-    "directory": "dist"
+    "directory": "dist",
+    "access": "public"
   },
   "license": "MIT",
   "main": "dist/index.cjs.js",
