@@ -9,6 +9,10 @@ import {
   TimeReport,
 } from "@split-tests/core";
 
+function isDefined<T>(val: T | null | undefined): value is T {
+  return !!t;
+}
+
 function findFiles(config: any): string[] {
   const rootDir = config.integrationFolder;
   const pattern = config.testFiles;
@@ -22,7 +26,7 @@ function loadReports(config: any): TimeReport[] {
   const rootDir = config.projectRoot;
   const reports = glob.sync(pattern, { cwd: rootDir, absolute: true });
 
-  return reports.map(loadReport).filter(t => !!t).map((t) => ({
+  return reports.map(loadReport).filter(isDefined).map((t) => ({
     time: t.time,
     path: path.join(config.projectRoot, t.path),
   }));
