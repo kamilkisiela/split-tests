@@ -1,6 +1,6 @@
 {
   "name": "@split-tests/jest",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Splits test files in Jest and ensures all parallel jobs finish work at a similar time",
   "author": {
     "name": "Kamil Kisiela",
@@ -34,9 +34,11 @@
     "prepack": "bob prepack"
   },
   "dependencies": {
-    "@split-tests/core": "^0.0.7"
+    "@split-tests/core": "^0.1.0"
   },
   "buildOptions": {
-    "external": ["@jest/test-sequencer"]
+    "external": [
+      "@jest/test-sequencer"
+    ]
   }
 }
