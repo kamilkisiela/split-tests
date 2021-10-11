@@ -9,8 +9,8 @@ import {
   TimeReport,
 } from "@split-tests/core";
 
-function isDefined<T>(val: T | null | undefined): value is T {
-  return !!t;
+function isDefined<T>(val: T | null | undefined): val is T {
+  return !!val;
 }
 
 function findFiles(config: any): string[] {
