@@ -22,14 +22,18 @@ function loadReports(config: any): TimeReport[] {
   const rootDir = config.projectRoot;
   const reports = glob.sync(pattern, { cwd: rootDir, absolute: true });
 
-  return reports.map(loadReport).map((t) => ({
+  return reports.map(loadReport).filter(t => !!t).map((t) => ({
     time: t.time,
     path: path.join(config.projectRoot, t.path),
   }));
 }
 
-function loadReport(file: string) {
+function loadReport(file: string): null | {time: number, path: string} {
   const junit = loadXML(file);
+
+  if (!junit.testsuites.testsuite || !junit.testsuites.testsuite.length) {
+    return null;
+  }
 
   const time = parseFloat(junit.testsuites.time);
   const testfile = findFilenameInJUnit(junit.testsuites);
