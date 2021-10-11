@@ -24,7 +24,6 @@ jobs:
 
       - name: Prepare NPM Credentials
         run: |
-          cp .npmrc $HOME/.npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> $HOME/.npmrc
           npm config set always-auth true
         env:
