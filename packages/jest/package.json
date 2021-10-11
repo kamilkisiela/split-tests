@@ -20,6 +20,9 @@
     "url": "kamilkisiela/split-tests",
     "directory": "packages/jest"
   },
+  "publishConfig": {
+    "directory": "dist"
+  },
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

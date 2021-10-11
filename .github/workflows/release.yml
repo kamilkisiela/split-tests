@@ -1,0 +1,40 @@
+name: release
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    name: 'build & publish'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Prepare NPM Credentials
+        run: |
+          cp .npmrc $HOME/.npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> $HOME/.npmrc
+          npm config set always-auth true
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create Release Pull Request or Publish packages
+        uses: changesets/action@master
+        with:
+          publish: yarn release
+          commit: 'chore(release): update monorepo packages versions'
+          title: 'Upcoming Release Changes'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
