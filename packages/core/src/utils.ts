@@ -84,7 +84,7 @@ export function detectEnv(config?: {
 }): {
   index: number;
   total: number;
-} {
+} | null {
   const envs = [
     // Knapsack / TravisCI / GitLab
     {
@@ -145,10 +145,6 @@ export function detectEnv(config?: {
       match = { index, total };
       break;
     }
-  }
-
-  if (!match) {
-    throw new Error(`Failed to detect any relevant environment variables`);
   }
 
   return match;

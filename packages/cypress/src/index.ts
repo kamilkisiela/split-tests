@@ -7,6 +7,7 @@ import {
   findFilenameInJUnit,
   loadXML,
   TimeReport,
+  detectEnv,
 } from "@split-tests/core";
 
 function isDefined<T>(val: T | null | undefined): val is T {
@@ -26,13 +27,16 @@ function loadReports(config: any): TimeReport[] {
   const rootDir = config.projectRoot;
   const reports = glob.sync(pattern, { cwd: rootDir, absolute: true });
 
-  return reports.map(loadReport).filter(isDefined).map((t) => ({
-    time: t.time,
-    path: path.join(config.projectRoot, t.path),
-  }));
+  return reports
+    .map(loadReport)
+    .filter(isDefined)
+    .map((t) => ({
+      time: t.time,
+      path: path.join(config.projectRoot, t.path),
+    }));
 }
 
-function loadReport(file: string): null | {time: number, path: string} {
+function loadReport(file: string): null | { time: number; path: string } {
   const junit = loadXML(file);
 
   if (!junit.testsuites.testsuite || !junit.testsuites.testsuite.length) {
@@ -49,7 +53,12 @@ function loadReport(file: string): null | {time: number, path: string} {
 }
 
 module.exports = (_on: any, config: any) => {
-  if (!process.env.CYPRESS_JOBS_TOTAL) {
+  let detected = detectEnv({
+    indexName: "CYPRESS_JOBS_INDEX",
+    totalName: "CYPRESS_JOBS_TOTAL",
+  });
+
+  if (!detected) {
     return config;
   }
 
@@ -58,16 +67,13 @@ module.exports = (_on: any, config: any) => {
     path: t,
   }));
 
-  let total = parseInt(process.env.CYPRESS_JOBS_TOTAL!, 10);
-  let index = parseInt(process.env.CYPRESS_JOBS_INDEX!, 10);
-
   let reports = loadReports(config);
   reports = removeDeletedFiles(reports, normalizedTests);
   reports = addNewFiles(reports, normalizedTests);
 
-  const groups = distribute(reports, total);
+  const groups = distribute(reports, detected.total);
 
-  config.testFiles = groups[index].files
+  config.testFiles = groups[detected.index].files
     .map((testFile: any) => normalizedTests.find((t) => t.path === testFile)!)
     .map((t) => path.relative(config.integrationFolder, t.path));
 

@@ -5,6 +5,7 @@ import {
   removeDeletedFiles,
   addNewFiles,
   TimeReport,
+  detectEnv,
 } from "@split-tests/core";
 
 import junit from "./junit-adapter";
@@ -26,15 +27,23 @@ function getArg(name: string) {
 export default class JobSequencer extends Sequencer {
   // @ts-ignore
   async sort(tests: Test[]) {
-    if (process.env.JEST_JOBS_TOTAL || getArg("jobsTotal")) {
-      let total = parseInt(
-        process.env.JEST_JOBS_TOTAL || getArg("jobsTotal")!,
-        10
-      );
-      let index = parseInt(
-        process.env.JEST_JOBS_INDEX || getArg("jobsIndex")!,
-        10
-      );
+    let detected = detectEnv({
+      indexName: "JEST_JOBS_INDEX",
+      totalName: "JEST_JOBS_TOTAL",
+    });
+  
+    if (!detected && (getArg("jobsTotal") && getArg("jobsIndex"))) {
+      detected = {
+        total: parseInt(
+          getArg("jobsTotal")!,
+          10
+        ),
+        index: parseInt(getArg("jobsIndex")!, 10)
+      }
+    }
+
+    if (detected) {
+      let { total, index } = detected;
 
       if (process.env.JEST_NORMAL) {
         return tests
