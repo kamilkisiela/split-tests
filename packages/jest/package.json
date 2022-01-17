@@ -1,6 +1,6 @@
 {
   "name": "@split-tests/jest",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Splits test files in Jest and ensures all parallel jobs finish work at a similar time",
   "author": {
     "name": "Kamil Kisiela",
@@ -35,7 +35,7 @@
     "prepack": "bob prepack"
   },
   "dependencies": {
-    "@split-tests/core": "^0.2.0"
+    "@split-tests/core": "^0.1.0"
   },
   "buildOptions": {
     "external": [
