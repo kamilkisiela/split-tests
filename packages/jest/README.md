@@ -66,6 +66,14 @@ Jobs are calculated at run time:
 - `JEST_JOBS_TOTAL` - total number of jobs
 - `JEST_JOBS_INDEX` - index number of the job (starts with 0)
 
+Or 
+
+- Knapsack / TravisCI / GitLab - `CI_NODE_INDEX` / `CI_NODE_TOTAL`
+- CircleCI - `CIRCLE_NODE_INDEX` / `CIRCLE_NODE_TOTAL`
+- Bitbucket Pipelines - `BITBUCKET_PARALLEL_STEP` / `BITBUCKET_PARALLEL_STEP_COUNT`
+- Buildkite - `BUILDKITE_PARALLEL_JOB` / `BUILDKITE_PARALLEL_JOB_COUNT`
+- Semaphore - `SEMAPHORE_CURRENT_JOB` / `SEMAPHORE_JOB_COUNT`
+
 **Using cli arguments**
 
     $ jest --jobsTotal=3 --jobsIndex=0
