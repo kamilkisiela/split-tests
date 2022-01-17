@@ -1,5 +1,13 @@
 # @split-tests/jest
 
+## 0.2.1
+
+### Patch Changes
+
+- 803eaa7: Fix
+- Updated dependencies [803eaa7]
+  - @split-tests/core@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes
