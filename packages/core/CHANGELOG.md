@@ -1,5 +1,11 @@
 # @split-tests/core
 
+## 0.2.1
+
+### Patch Changes
+
+- 803eaa7: Fix
+
 ## 0.2.0
 
 ### Minor Changes
