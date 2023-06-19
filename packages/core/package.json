@@ -35,6 +35,6 @@
     "prepack": "bob prepack"
   },
   "dependencies": {
-    "fast-xml-parser": "3.17.6"
+    "fast-xml-parser": "4.2.4"
   }
 }
