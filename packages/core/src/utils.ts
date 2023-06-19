@@ -1,17 +1,15 @@
 import fs from "fs";
-import xmlParser from "fast-xml-parser";
+import { XMLParser } from "fast-xml-parser";
 import { TimeReport, Test } from "./types";
 
 export function loadXML(file: string) {
   const junitRaw = fs.readFileSync(file, "utf-8");
-  return xmlParser.parse(
-    junitRaw,
-    {
+  const parser = new XMLParser({
       ignoreAttributes: false,
       attributeNamePrefix: "",
-    },
-    true
-  );
+    });
+
+  return parser.parse(junitRaw);
 }
 
 export function addNewFiles(reports: TimeReport[], tests: Test[]) {
