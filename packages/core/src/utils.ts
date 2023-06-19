@@ -1,10 +1,13 @@
 import fs from "fs";
-import xmlParser from "fast-xml-parser";
 import { TimeReport, Test } from "./types";
+
+const {XMLParser} = require("fast-xml-parser");
 
 export function loadXML(file: string) {
   const junitRaw = fs.readFileSync(file, "utf-8");
-  return xmlParser.parse(
+  const parser = new XMLParser();
+
+  return parser.parse(
     junitRaw,
     {
       ignoreAttributes: false,
