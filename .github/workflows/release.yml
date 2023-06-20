@@ -30,7 +30,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create Release Pull Request or Publish packages
-        uses: changesets/action@master
+        uses: changesets/action@main
         with:
           publish: yarn release
           commit: 'chore(release): update monorepo packages versions'
